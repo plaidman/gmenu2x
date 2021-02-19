@@ -86,6 +86,9 @@ unsigned short Battery::getBatteryLevel()
 		fclose(handle);
 	}
 
+	if (voltage_now < voltage_min) {
+		return 0;
+	}
 	return (voltage_now - voltage_min) * 6 / (voltage_max - voltage_min);
 }
 
